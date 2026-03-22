@@ -101,11 +101,11 @@ const schemaOrg = {
     <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/logo.png" />
-    <link rel="apple-touch-icon" href="/images/logo.png" />
+    <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}images/logo.png`} />
+    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}images/logo.png`} />
 
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href={`${import.meta.env.BASE_URL}manifest.json`} />
     <meta name="theme-color" content="#C8960C" />
 
     <!-- Google Fonts -->

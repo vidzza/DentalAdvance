@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://vidzza.github.io',
-  base: '/DentalAdvance',
+  base: '/DentalAdvance/',
   integrations: [
     tailwind(),
     sitemap({

@@ -122,7 +122,7 @@ const currentYear = new Date().getFullYear();
     <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8 py-5">
       <div class="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-dark-500">
         <p>&copy; {currentYear} Dental Advance. Todos los derechos reservados.</p>
-        <a href="/aviso-de-privacidad" class="hover:text-gold-400 transition-colors">
+        <a href={`${import.meta.env.BASE_URL}aviso-de-privacidad`} class="hover:text-gold-400 transition-colors">
           Aviso de Privacidad
         </a>
       </div>
