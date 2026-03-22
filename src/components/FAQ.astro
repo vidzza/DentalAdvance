@@ -1,0 +1,140 @@
+---
+import { site } from '../content/site.ts';
+const faqs = [
+  {
+    question: '¿Cuánto cuesta una consulta dental?',
+    answer: 'La consulta de valoración inicial tiene un costo accesible. Realizamos un diagnóstico completo y te presentamos un plan de tratamiento detallado con costos transparentes. Contáctanos por WhatsApp para conocer precios actualizados.',
+  },
+  {
+    question: '¿Aceptan seguros dentales o planes de pago?',
+    answer: 'Aceptamos efectivo, tarjeta de crédito y débito, y transferencia bancaria. Para tratamientos extensos, ofrecemos planes de pago flexibles para que cuides tu sonrisa sin preocupaciones financieras.',
+  },
+  {
+    question: '¿Cuánto tiempo dura un tratamiento de ortodoncia?',
+    answer: 'Varía según cada caso. Los brackets convencionales suelen durar entre 12 y 24 meses. En tu consulta evaluamos tu caso y te damos un estimado preciso del tiempo de tratamiento.',
+  },
+  {
+    question: '¿Los implantes dentales duelen?',
+    answer: 'El procedimiento se realiza con anestesia local — no sentirás dolor durante la colocación. Después es normal sentir molestias leves que se controlan con medicamentos. La mayoría de pacientes reportan una experiencia mucho mejor de lo esperado.',
+  },
+  {
+    question: '¿Atienden urgencias dentales?',
+    answer: `Sí, atendemos urgencias durante nuestro horario (${site.hours.weekdays.combined}). Si tienes una emergencia, llámanos o escríbenos por WhatsApp al ${site.contact.phoneLocal} y te atenderemos lo antes posible.`,
+  },
+  {
+    question: '¿A partir de qué edad pueden venir los niños?',
+    answer: 'Recomendamos la primera visita a partir del primer año de vida o cuando aparecen los primeros dientes. Contamos con odontopediatría especializada para que los pequeños tengan una experiencia agradable y sin miedos.',
+  },
+  {
+    question: '¿Qué incluye una limpieza dental profesional?',
+    answer: 'Incluye eliminación de sarro y placa bacteriana, pulido dental, aplicación de flúor y revisión completa de salud bucal. Es rápido, cómodo y esencial para mantener una sonrisa sana.',
+  },
+  {
+    question: '¿Cómo puedo agendar una cita?',
+    answer: `Por WhatsApp al ${site.contact.phoneLocal}, llamando al mismo número, enviando un correo a ${site.contact.email}, o usando el formulario de contacto. Te respondemos a la brevedad para confirmar tu cita.`,
+  },
+];
+---
+
+<section id="faq" class="section-padding bg-white">
+  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Centered header -->
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <span class="w-8 h-px bg-gold-500" aria-hidden="true"></span>
+        <span class="text-xs font-semibold text-gold-500 tracking-[0.2em] uppercase">Preguntas Frecuentes</span>
+        <span class="w-8 h-px bg-gold-500" aria-hidden="true"></span>
+      </div>
+      <h2 class="text-4xl sm:text-5xl font-heading font-bold text-dark-900 leading-[1.08]">
+        Resolvemos tus <span class="gold-text">dudas</span>
+      </h2>
+    </div>
+
+    <!-- 2-column accordion grid -->
+    <div class="grid lg:grid-cols-2 gap-x-8 gap-y-3 mb-12">
+      {faqs.map((faq, index) => (
+        <div class="faq-item border border-dark-100 rounded-xl overflow-hidden hover:border-gold-400/50 transition-colors duration-200">
+          <button
+            class="faq-toggle w-full flex items-center justify-between text-left px-5 py-4 gap-4"
+            aria-expanded="false"
+            data-faq-index={index}
+          >
+            <span class="font-body font-semibold text-dark-800 text-sm leading-snug pr-2">
+              {faq.question}
+            </span>
+            <span class="faq-icon w-7 h-7 rounded-lg bg-gold-50 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-gold-500 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-content hidden px-5 pb-4">
+            <p class="text-dark-400 text-sm leading-relaxed border-t border-dark-50 pt-3">
+              {faq.answer}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA centered below -->
+    <div class="text-center reveal">
+      <p class="text-dark-400 text-sm mb-5">¿Tu pregunta no está aquí? Escríbenos directamente.</p>
+      <a
+        href={`https://wa.me/${site.contact.whatsappNumber}?text=${site.wa.pregunta}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+        data-cta="faq-preguntar"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Hacer una pregunta
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('.faq-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.faq-item');
+      const content = item.querySelector('.faq-content');
+      const icon = button.querySelector('.faq-icon svg');
+      const iconWrap = button.querySelector('.faq-icon');
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll('.faq-item').forEach((otherItem) => {
+        if (otherItem !== item) {
+          otherItem.querySelector('.faq-content').classList.add('hidden');
+          const ob = otherItem.querySelector('.faq-toggle');
+          ob.setAttribute('aria-expanded', 'false');
+          ob.querySelector('.faq-icon svg').style.transform = 'rotate(0deg)';
+          ob.querySelector('.faq-icon').classList.remove('bg-gold-500');
+          ob.querySelector('.faq-icon').classList.add('bg-gold-50');
+          ob.querySelector('.faq-icon svg').classList.remove('text-white');
+          ob.querySelector('.faq-icon svg').classList.add('text-gold-500');
+        }
+      });
+
+      content.classList.toggle('hidden');
+      button.setAttribute('aria-expanded', String(!isOpen));
+      icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+
+      if (!isOpen) {
+        iconWrap.classList.add('bg-gold-500');
+        iconWrap.classList.remove('bg-gold-50');
+        icon.classList.add('text-white');
+        icon.classList.remove('text-gold-500');
+      } else {
+        iconWrap.classList.remove('bg-gold-500');
+        iconWrap.classList.add('bg-gold-50');
+        icon.classList.remove('text-white');
+        icon.classList.add('text-gold-500');
+      }
+    });
+  });
+</script>

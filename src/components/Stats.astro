@@ -1,0 +1,33 @@
+---
+const stats = [
+  { value: '8+',   label: 'Especialidades', sub: 'bajo un mismo techo' },
+  { value: '2',    label: 'Turnos diarios',  sub: 'mañana y tarde' },
+  { value: '100%', label: 'Transparencia',   sub: 'sin costos ocultos' },
+  { value: '5★',   label: 'Valoración',      sub: 'Google & Facebook' },
+];
+---
+
+<div class="bg-dark-900 border-t border-white/10">
+  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4">
+      {stats.map((stat, i) => (
+        <div class={`flex flex-col justify-center px-6 sm:px-10 py-14
+          ${i % 2 === 0 ? 'border-r border-white/8' : ''}
+          ${i < 2 ? 'border-b border-white/8 lg:border-b-0' : ''}
+          ${i === 1 ? 'lg:border-r lg:border-white/8' : ''}
+          ${i === 2 ? 'lg:border-r lg:border-white/8' : ''}
+        `}>
+          <div class="w-8 h-px bg-gold-500/50 mb-4"></div>
+          <span
+            class="font-heading font-bold text-white leading-none mb-3 block"
+            style="font-size: clamp(2.8rem, 5.5vw, 4.5rem);"
+          >
+            {stat.value}
+          </span>
+          <span class="text-sm font-semibold text-white/80 mb-1">{stat.label}</span>
+          <span class="text-xs text-white/45 uppercase tracking-widest">{stat.sub}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../content/site.ts';
+---
+
+<Layout
+  title="Aviso de Privacidad | Dental Advance — Cuauhtémoc, Chihuahua"
+  description="Aviso de privacidad de Dental Advance. Conoce cómo protegemos tus datos personales conforme a la LFPDPPP."
+>
+  <Header />
+  <main class="pt-28 pb-16">
+    <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto prose prose-lg">
+        <h1 class="text-3xl sm:text-4xl font-heading font-bold text-dark-800 mb-8">
+          Aviso de Privacidad
+        </h1>
+
+        <div class="space-y-6 text-dark-500 text-base leading-relaxed">
+          <p>
+            <strong class="text-dark-800">{site.name}</strong>, con domicilio en {site.contact.address.street},
+            {site.contact.address.colony}, C.P. {site.contact.address.zip}, Cd. {site.contact.address.city}, {site.contact.address.state}, México, es responsable del tratamiento
+            de los datos personales que nos proporcione, los cuales serán protegidos conforme a lo dispuesto
+            por la <strong class="text-dark-800">Ley Federal de Protección de Datos Personales en Posesión
+            de los Particulares (LFPDPPP)</strong> y demás normatividad aplicable.
+          </p>
+
+          <h2 class="text-xl font-heading font-bold text-dark-800 !mt-10">
+            ¿Qué datos personales recabamos?
+          </h2>
+          <p>
+            Para las finalidades señaladas en el presente aviso de privacidad, podemos recabar
+            los siguientes datos personales:
+          </p>
+          <ul class="list-disc list-inside space-y-2">
+            <li>Nombre completo</li>
+            <li>Número de teléfono</li>
+            <li>Correo electrónico</li>
+            <li>Datos de salud bucal (en consulta presencial)</li>
+          </ul>
+
+          <h2 class="text-xl font-heading font-bold text-dark-800 !mt-10">
+            ¿Para qué fines utilizamos sus datos personales?
+          </h2>
+          <p>Los datos personales que recabamos se utilizarán para las siguientes finalidades:</p>
+          <ul class="list-disc list-inside space-y-2">
+            <li>Agendar y confirmar citas</li>
+            <li>Brindar atención y seguimiento a tratamientos dentales</li>
+            <li>Responder consultas y solicitudes de información</li>
+            <li>Enviar recordatorios de citas y tratamientos</li>
+            <li>Informar sobre promociones y servicios (solo con su consentimiento)</li>
+          </ul>
+
+          <h2 class="text-xl font-heading font-bold text-dark-800 !mt-10">
+            ¿Cómo protegemos sus datos?
+          </h2>
+          <p>
+            Dental Advance implementa medidas de seguridad administrativas, técnicas y físicas
+            para proteger sus datos personales contra daño, pérdida, alteración, destrucción,
+            uso, acceso o tratamiento no autorizado.
+          </p>
+
+          <h2 class="text-xl font-heading font-bold text-dark-800 !mt-10">
+            Derechos ARCO
+          </h2>
+          <p>
+            Usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse al tratamiento
+            de sus datos personales (Derechos ARCO). Para ejercer estos derechos, puede
+            enviar su solicitud al correo electrónico:
+            <a href={`mailto:${site.contact.email}`} class="text-gold-500 hover:text-gold-600">
+              {site.contact.email}
+            </a>
+          </p>
+
+          <h2 class="text-xl font-heading font-bold text-dark-800 !mt-10">
+            Transferencia de datos
+          </h2>
+          <p>
+            Sus datos personales no serán transferidos a terceros sin su consentimiento,
+            salvo las excepciones previstas en la LFPDPPP y su Reglamento.
+          </p>
+
+          <h2 class="text-xl font-heading font-bold text-dark-800 !mt-10">
+            Cambios al aviso de privacidad
+          </h2>
+          <p>
+            Nos reservamos el derecho de efectuar modificaciones o actualizaciones al
+            presente aviso de privacidad. Las modificaciones estarán disponibles en esta
+            misma página web.
+          </p>
+
+          <h2 class="text-xl font-heading font-bold text-dark-800 !mt-10">
+            Contacto
+          </h2>
+          <p>
+            Si tiene dudas sobre este aviso de privacidad o el tratamiento de sus datos
+            personales, contáctenos:
+          </p>
+          <ul class="list-disc list-inside space-y-2">
+            <li>Email: <a href={`mailto:${site.contact.email}`} class="text-gold-500 hover:text-gold-600">{site.contact.email}</a></li>
+            <li>Teléfono: <a href={`tel:${site.contact.phoneE164}`} class="text-gold-500 hover:text-gold-600">{site.contact.phoneLocal}</a></li>
+            <li>Dirección: {site.contact.address.street}, {site.contact.address.colony}, C.P. {site.contact.address.zip}, Cd. {site.contact.address.city}, {site.contact.address.state}, México</li>
+          </ul>
+
+          <p class="text-sm text-dark-300 !mt-10">
+            Última actualización: Marzo 2026
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <a href="/" class="btn-primary text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

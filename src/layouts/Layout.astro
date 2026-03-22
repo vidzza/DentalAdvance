@@ -1,0 +1,176 @@
+---
+import { site } from '../content/site.ts';
+import '../styles/globals.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title,
+  description = site.shortDescription,
+  ogImage = site.seo.ogImage,
+  canonicalUrl,
+} = Astro.props;
+
+const siteUrl = site.url;
+const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'Dentist',
+  name: site.name,
+  description: site.description,
+  url: siteUrl,
+  telephone: site.contact.phoneE164,
+  email: site.contact.email,
+  image: `${siteUrl}/images/logo.png`,
+  logo: `${siteUrl}/images/logo.png`,
+  priceRange: '$$',
+  currenciesAccepted: 'MXN',
+  paymentAccepted: 'Efectivo, Tarjeta de crédito, Tarjeta de débito, Transferencia',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.contact.address.street,
+    addressLocality: site.contact.address.city,
+    addressRegion: site.contact.address.state,
+    postalCode: site.contact.address.zip,
+    addressCountry: site.contact.address.countryCode,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: site.contact.coordinates.lat,
+    longitude: site.contact.coordinates.lng,
+  },
+  openingHoursSpecification: site.hours.schema,
+  sameAs: [
+    site.social.instagram,
+    site.social.facebook,
+  ],
+  hasMap: site.contact.mapsDirectionsUrl,
+  areaServed: {
+    '@type': 'City',
+    name: site.contact.address.city,
+    containedInPlace: {
+      '@type': 'State',
+      name: site.contact.address.state,
+    },
+  },
+  medicalSpecialty: [
+    'Dentistry',
+    'Orthodontics',
+    'Endodontics',
+    'Periodontics',
+    'Prosthodontics',
+    'PediatricDentistry',
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={site.seo.keywords} />
+    <meta name="author" content={site.name} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Dental Advance" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <link rel="apple-touch-icon" href="/images/logo.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#C8960C" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+
+    <!-- Google Tag Manager (placeholder) -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+    </script>
+  </head>
+
+  <body class="font-body text-dark-800 bg-white antialiased">
+    <slot />
+
+    <!-- Scroll reveal animation script -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+          );
+
+          revealElements.forEach((el, index) => {
+            el.style.transitionDelay = `${index % 4 * 100}ms`;
+            observer.observe(el);
+          });
+        } else {
+          revealElements.forEach((el) => el.classList.add('visible'));
+        }
+      });
+    </script>
+
+    <!-- Analytics event tracking -->
+    <script is:inline>
+      document.addEventListener('click', (e) => {
+        const target = e.target.closest('a, button');
+        if (!target) return;
+
+        const href = target.getAttribute('href') || '';
+        if (href.startsWith('tel:')) {
+          window.dataLayer.push({ event: 'phone_click', link: href });
+        } else if (href.includes('wa.me')) {
+          window.dataLayer.push({ event: 'whatsapp_click', link: href });
+        } else if (target.dataset.cta) {
+          window.dataLayer.push({ event: 'cta_click', cta_name: target.dataset.cta });
+        }
+      });
+    </script>
+  </body>
+</html>

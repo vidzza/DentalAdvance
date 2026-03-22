@@ -1,0 +1,108 @@
+---
+const features = [
+  {
+    number: '01',
+    title: 'Tecnología de Vanguardia',
+    description: 'Equipamiento dental de última generación para diagnósticos precisos y tratamientos más cómodos, rápidos y efectivos.',
+    icon: 'tech',
+  },
+  {
+    number: '02',
+    title: 'Atención Personalizada',
+    description: 'Cada paciente es único. Diseñamos planes de tratamiento adaptados a tus necesidades, presupuesto y objetivos de salud.',
+    icon: 'personal',
+  },
+  {
+    number: '03',
+    title: 'Ubicación Accesible',
+    description: 'En el corazón de la Col. Progreso, Cuauhtémoc, con fácil acceso. A unos minutos de cualquier punto de la ciudad.',
+    icon: 'location',
+  },
+  {
+    number: '04',
+    title: 'Horarios Flexibles',
+    description: 'Lunes a viernes en doble turno: matutino y vespertino. Encuentra el horario que mejor se adapte a tu día.',
+    icon: 'clock',
+  },
+];
+---
+
+<section class="relative py-20 sm:py-24 lg:py-28 bg-dark-900 overflow-hidden">
+  <!-- Subtle grain texture overlay -->
+  <div class="absolute inset-0 opacity-[0.04] pointer-events-none" aria-hidden="true"
+    style="background-image: radial-gradient(circle at 1px 1px, rgba(200,150,12,0.6) 1px, transparent 0); background-size: 48px 48px;">
+  </div>
+  <!-- Gold ambient glows -->
+  <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-gold-500/5 rounded-full blur-[100px] pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative container-custom mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="max-w-2xl mb-16 reveal">
+      <span class="section-label !text-gold-400">Nuestras Ventajas</span>
+      <h2 class="text-4xl sm:text-5xl font-heading font-bold text-white leading-[1.08] mb-4">
+        ¿Por qué elegir<br>
+        <span class="gold-text">Dental Advance</span>?
+      </h2>
+      <p class="text-lg text-dark-300 leading-relaxed">
+        Más que una clínica dental — somos tu aliado de confianza en el cuidado de tu sonrisa.
+      </p>
+    </div>
+
+    <!-- Editorial grid: 2 cols on desktop, alternating proportions -->
+    <div class="grid sm:grid-cols-2 gap-px bg-white/5 rounded-2xl overflow-hidden">
+      {features.map((feature) => (
+        <div class="group relative bg-dark-900 p-8 sm:p-10 hover:bg-dark-700/40 transition-colors duration-300 reveal">
+
+          <!-- Large visible number -->
+          <div
+            class="font-heading italic font-bold leading-none mb-5 gold-text select-none"
+            style="font-size: clamp(3.5rem, 6vw, 5rem);"
+            aria-hidden="true"
+          >
+            {feature.number}
+          </div>
+
+          <!-- Icon -->
+          <div class="w-11 h-11 rounded-xl bg-gold-500/12 flex items-center justify-center mb-5 group-hover:bg-gold-500/20 transition-colors">
+            {feature.icon === 'tech' && (
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            )}
+            {feature.icon === 'personal' && (
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            )}
+            {feature.icon === 'location' && (
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            )}
+            {feature.icon === 'clock' && (
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            )}
+          </div>
+
+          <h3 class="text-xl font-heading font-bold text-white mb-3">{feature.title}</h3>
+          <p class="text-sm text-dark-300 leading-relaxed">{feature.description}</p>
+
+          <!-- Bottom accent line -->
+          <div class="absolute bottom-0 left-0 right-0 h-px bg-gold-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full"></div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

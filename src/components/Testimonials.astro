@@ -1,0 +1,148 @@
+---
+const testimonials = [
+  {
+    name: 'María G.',
+    service: 'Ortodoncia',
+    text: 'Excelente atención desde la primera consulta. Me explicaron todo el tratamiento de brackets con mucha paciencia. Mis dientes ya se están alineando y estoy muy contenta con los resultados.',
+    rating: 5,
+    initial: 'M',
+    featured: true,
+  },
+  {
+    name: 'Roberto L.',
+    service: 'Implante Dental',
+    text: 'Tenía mucho miedo del procedimiento, pero el equipo de Dental Advance me hizo sentir muy cómodo. El implante quedó perfecto y ya puedo comer con normalidad. Totalmente recomendados.',
+    rating: 5,
+    initial: 'R',
+    featured: false,
+  },
+  {
+    name: 'Ana P.',
+    service: 'Blanqueamiento',
+    text: 'Mi sonrisa cambió completamente. El resultado fue natural y muy bonito. Las instalaciones son muy limpias y modernas. Recomiendo al 100%.',
+    rating: 5,
+    initial: 'A',
+    featured: false,
+  },
+  {
+    name: 'Carlos M.',
+    service: 'Limpieza Dental',
+    text: 'Llevo a toda mi familia. La atención con los niños es increíble. Los precios son justos y siempre te explican antes de hacer cualquier tratamiento.',
+    rating: 5,
+    initial: 'C',
+    featured: false,
+  },
+  {
+    name: 'Laura S.',
+    service: 'Diseño de Sonrisa',
+    text: 'Llegué con mucha inseguridad y salí sintiéndome otra persona. Las carillas quedaron perfectas, muy naturales. Sin duda la mejor decisión que he tomado.',
+    rating: 5,
+    initial: 'L',
+    featured: false,
+  },
+];
+
+const featured = testimonials[0];
+const rest = testimonials.slice(1);
+---
+
+<section id="testimonios" class="py-20 sm:py-24 lg:py-28 bg-ivory-100">
+  <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="max-w-xl mb-14 reveal">
+      <span class="section-label">Testimonios</span>
+      <h2 class="text-4xl sm:text-5xl font-heading font-bold text-dark-900 leading-[1.08]">
+        Lo que dicen nuestros <span class="gold-text">pacientes</span>
+      </h2>
+    </div>
+
+    <!-- Featured testimonial -->
+    <div class="relative bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 rounded-2xl p-8 sm:p-12 mb-5 overflow-hidden reveal">
+      <!-- Gold ambient -->
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500/6 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative lg:flex lg:items-end lg:gap-12">
+        <!-- Quote mark -->
+        <div
+          class="font-heading font-bold gold-text opacity-30 leading-none select-none absolute -top-2 -left-1 sm:relative sm:top-auto sm:left-auto sm:flex-shrink-0"
+          style="font-size: clamp(6rem, 12vw, 10rem);"
+          aria-hidden="true"
+        >"</div>
+
+        <div class="pt-8 sm:pt-0">
+          <!-- Stars -->
+          <div class="flex gap-1 mb-5">
+            {Array.from({ length: featured.rating }).map(() => (
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+
+          <blockquote class="text-xl sm:text-2xl text-white/90 font-medium leading-relaxed mb-8 max-w-3xl italic">
+            "{featured.text}"
+          </blockquote>
+
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full gold-gradient flex items-center justify-center text-white font-bold text-base flex-shrink-0 ring-2 ring-gold-500/25 ring-offset-2 ring-offset-dark-900">
+              {featured.initial}
+            </div>
+            <div>
+              <p class="font-semibold text-white text-sm">{featured.name}</p>
+              <p class="text-xs text-gold-400">{featured.service}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rest of testimonials — 2-col grid -->
+    <div class="grid sm:grid-cols-2 gap-4 sm:gap-5">
+      {rest.map((t, i) => (
+        <div
+          class="bg-ivory-50 border border-ivory-200 rounded-2xl p-6 card-hover reveal"
+          style={`transition-delay: ${i * 80}ms`}
+        >
+          <!-- Stars -->
+          <div class="flex gap-0.5 mb-3">
+            {Array.from({ length: t.rating }).map(() => (
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gold-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+
+          <p class="text-dark-500 text-sm leading-relaxed mb-5 italic">"{t.text}"</p>
+
+          <div class="flex items-center gap-3 pt-4 border-t border-dark-100">
+            <div class="w-9 h-9 rounded-full gold-gradient flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
+              {t.initial}
+            </div>
+            <div>
+              <p class="font-semibold text-dark-800 text-sm">{t.name}</p>
+              <p class="text-xs text-gold-500">{t.service}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Google CTA -->
+    <div class="mt-10 reveal">
+      <a href="https://search.google.com/local/writereview?placeid=ChIJXyimDpbR2YARdGVFfJY_kqU" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-5 py-3 bg-ivory-50 border border-gold-200/60 rounded-full shadow-sm hover:border-gold-400 hover:shadow-md transition-all duration-200">
+        <div class="flex gap-0.5">
+          {Array.from({ length: 5 }).map(() => (
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gold-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          ))}
+        </div>
+        <span class="text-sm text-dark-500">
+          Encuéntranos en <strong class="text-dark-800">Google</strong> y déjanos tu reseña
+        </span>
+      </a>
+    </div>
+
+  </div>
+</section>

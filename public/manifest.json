@@ -1,0 +1,21 @@
+{
+  "name": "Dental Advance",
+  "short_name": "Dental Advance",
+  "description": "Clínica dental de vanguardia en Cd. Cuauhtémoc, Chihuahua",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#C8960C",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["health", "medical"]
+}
