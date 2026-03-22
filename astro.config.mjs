@@ -3,7 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://dentaladvance.com',
+  site: 'https://vidzza.github.io',
+  base: '/DentalAdvance',
   integrations: [
     tailwind(),
     sitemap({

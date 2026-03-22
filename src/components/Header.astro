@@ -18,7 +18,7 @@ const navLinks = [
       <a href="#inicio" class="flex items-center gap-3 group" aria-label="Dental Advance - Inicio">
         <div class="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-gold-500/30 transition-transform duration-300 group-hover:scale-105">
           <img
-            src="/images/logo.png"
+            src={`${import.meta.env.BASE_URL}images/logo.png`}
             alt="Dental Advance"
             width="44"
             height="44"
@@ -97,7 +97,7 @@ const navLinks = [
   <div class="flex items-center justify-between px-5 h-20 border-b border-white/8 flex-shrink-0">
     <a href="#inicio" class="flex items-center gap-3" aria-label="Dental Advance">
       <div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-gold-500/30">
-        <img src="/images/logo.png" alt="" width="40" height="40" class="w-full h-full object-cover scale-110" aria-hidden="true" />
+        <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="" width="40" height="40" class="w-full h-full object-cover scale-110" aria-hidden="true" />
       </div>
       <span class="text-white font-heading font-bold text-base">Dental Advance</span>
     </a>
